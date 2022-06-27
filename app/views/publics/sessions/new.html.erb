@@ -1,0 +1,65 @@
+<div class="row mt-5">
+  <div class="col-auto offset-1 bg-gray">
+    <h4>ログイン</h4>
+    <div class="col-auto ml-3 mt-5">
+      <h6>会員の方はこちらからログイン</h6>
+    </div>
+  </div>
+</div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row mt-4">
+    <div class="col-2 offset-2">メールアドレス</div>
+    <div class="col-5">
+      <%=f.email_field :email, class: "form-control",autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-2 offset-2">パスワード</div>
+    <div class="col-5">
+      <%=f.email_field :password, class: "form-control",autofocus: true, autocomplete: "current-password" %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-2 offset-4">
+      <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-auto offset-1 bg-gray">
+      <div class="col-auto ml-3 mt-5">
+        <h6>会員登録がお済みでない方</h6>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-auto offset-3">
+      <%= link_to "こちら", new_customer_registration_path %>
+    </div>
+    <div class="col-auto">
+      <h6>から新規登録を行なってください。</h6>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "publics/shared/links" %>

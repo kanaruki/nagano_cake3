@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="row mt-5 mb-5">
+      <div class="col-2 ml-5 border border-secondary">
+        <h1>LOgo</h1>
+      </div>
+      <div class="col-1 mt-auto mb-auto ml-auto">
+        <button type="button" class="btn btn-outline-dark btn-block">About</button>
+      </div>
+      <div class="col-1 mt-auto mb-auto">
+        <button type="button" class="btn btn-outline-dark btn-block">商品一覧</button>
+      </div>
+      <div class="col-1 mt-auto mb-auto">
+        <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-dark btn-block" %>
+      </div>
+      <div class="col-1 mt-auto mb-auto mr-5">
+        <%= link_to "ログイン", new_customer_session_path, class: "btn btn-dark btn-block" %>
+      </div>
+    </div>
+    <div class="border border-bottom-dark"></div>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
