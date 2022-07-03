@@ -28,7 +28,11 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
-
+  
+  def after_sign_up_path_for(resource)
+    customers_mypage_path
+  end
+  
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to

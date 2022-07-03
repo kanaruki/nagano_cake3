@@ -1,0 +1,19 @@
+<div class="row mt-5">
+  <div class="col-auto offset-1">
+    <h4 class="mb-0 bg-gray">注文情報入力</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h5>支払い方法</h5>
+  </div>
+</div>
+<%= form_with model: cart_item, url: cart_item_path(cart_item), method: :PATCH, local:true do |f| %>
+<%= form_with model: @order, url:
+<div class="row">
+  <div class="col">
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+  </div>
+</div>

@@ -23,6 +23,10 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # def update
   #   super
   # end
+  
+  def after_sign_up_path_for(resource)
+    admins_top_path
+  end
 
   # DELETE /resource
   # def destroy

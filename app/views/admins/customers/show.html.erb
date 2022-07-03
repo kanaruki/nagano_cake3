@@ -1,0 +1,86 @@
+<div class="row mt-5">
+  <div class="col-auto offset-1">
+    <h4 class="mb-0 bg-gray"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-9">
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">会員ID</h6>
+      </div>
+      <div class="col-8">
+        <h6 class="my-auto"><%= @customer.id %></h6>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">氏名</h6>
+      </div>
+      <div class="col-8">
+        <h6 class="my-auto"><%= @customer.last_name %><%= @customer.first_name %></h6>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">フリガナ</h6>
+      </div>
+      <div class="col-8">
+        <h6 class="my-auto"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></h6>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">郵便番号</h6>
+      </div>
+      <div class="col-8">
+        <h6 class="my-auto"><%= @customer.postal_code %></h6>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">住所</h6>
+      </div>
+      <div class="col-8">
+        <h6 class="my-auto"><%= @customer.address %></h6>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">電話番号</h6>
+      </div>
+      <div class="col-8">
+        <h6 class="my-auto"><%= @customer.telephone_number %></h6>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">メールアドレス</h6>
+      </div>
+      <div class="col-8">
+        <h6 class="my-auto"><%= @customer.email %></h6>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <h6 class="my-auto">会員ステータス</h6>
+      </div>
+      <div class="col-8">
+        <% if @customer.is_active == true then %>
+          <h6 class="my-auto text-success">有効</h6>
+        <%else%>
+          <h6 class="my-auto text-dark-50">無効</h6>
+        <%end%>
+      </div>
+    </div>
+    <div class="row  mt-4">
+      <div class="col-2 offset-3">
+        <%= link_to "編集する", edit_admins_customer_path(@customer), class: "btn btn-success"  %>
+      </div>
+      <div class="col-3 offset-1">
+        <%= link_to "注文履歴一覧をみる", admins_top_path, class: "btn btn-primary"  %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

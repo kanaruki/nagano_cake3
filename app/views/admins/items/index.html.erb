@@ -1,0 +1,48 @@
+<div class="row mt-5">
+  <div class="col-auto offset-1">
+    <div class="row bg-gray">
+      <h4 class="mb-0 mx-auto col-auto">商品一覧</h4>
+    </div>
+  </div>
+  <div class="col-auto ml-auto">
+    <%= link_to new_admins_item_path do %>
+      <i class="fas fa-plus-circle plus-button"></i>
+    <%end%>
+  </div>
+</div>
+<div class="row mt-5">
+  <table class="table">
+    <thead>
+      <tr class="bg-gray">
+        <th class="col-1">商品ID</th>
+        <th class="col-3">商品名</th>
+        <th class="col-1">税抜価格</th>
+        <th class="col-3">ジャンル</th>
+        <th class="col-2">ステータス</th>
+      </tr>
+    </thead>  
+    <% @itemp.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td class="row">
+          <%= link_to admins_item_path(item) do %>
+            <h6 class="col-auto text-dark border-bottom border-dark"><%= item.name %></h6>
+          <%end%>
+        </td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <% if item.is_active == true then %>
+          <td>
+            <h6 class="text-success">販売中</h6>
+          </td>
+        <%else%>
+          <td>
+            <h6 class="text-black-50">販売停止中</h6>
+          </td>
+        <%end%>
+      </tr>
+    <%end%>
+  </table>
+  <%= paginate @itemp %>
+</div>
+

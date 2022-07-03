@@ -4,32 +4,77 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/653e24c49b.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="row mt-5 mb-5">
-      <div class="col-2 ml-5 border border-secondary">
+      <div class="col-2 ml-5 border border-secondary mt-auto mb-auto">
         <h1>LOgo</h1>
       </div>
-      <div class="col-1 mt-auto mb-auto ml-auto">
-        <button type="button" class="btn btn-outline-dark btn-block">About</button>
-      </div>
-      <div class="col-1 mt-auto mb-auto">
-        <button type="button" class="btn btn-outline-dark btn-block">商品一覧</button>
-      </div>
-      <div class="col-1 mt-auto mb-auto">
-        <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-dark btn-block" %>
-      </div>
-      <div class="col-1 mt-auto mb-auto mr-5">
-        <%= link_to "ログイン", new_customer_session_path, class: "btn btn-dark btn-block" %>
-      </div>
+      <% if customer_signed_in? %>
+        <div class="col-8 mt-auto mb-auto ml-auto">
+          <div class="row">
+            <div class="col-2 mt-auto mb-auto ml-auto">
+              <%= link_to "マイページ", customers_mypage_path(current_customer), class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto">
+              <%= link_to "商品一覧", items_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto">
+              <%= link_to "カート", cart_items_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto mr-5">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-dark btn-block" %>
+            </div>
+          </div>
+        </div>
+      <%elsif admin_signed_in? %>
+        <div class="col-8 mt-auto mb-auto ml-auto">
+          <div class="row">
+            <div class="col-2 mt-auto mb-auto ml-auto">
+              <%= link_to "商品一覧", admins_items_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto">
+              <%= link_to "会員一覧", admins_customers_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto">
+              <%= link_to "注文履歴一覧", admins_top_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto">
+              <%= link_to "ジャンル一覧", admins_genres_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto mr-5">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-dark btn-block" %>
+            </div>
+          </div>
+        </div>
+      <%else%>
+        <div class="col-8 mt-auto mb-auto ml-auto">
+          <div class="row">
+            <div class="col-2 mt-auto mb-auto ml-auto">
+              <%= link_to "About誰もいない", about_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto">
+              <%= link_to "商品一覧", items_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto">
+              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-dark btn-block" %>
+            </div>
+            <div class="col-2 mt-auto mb-auto mr-5">
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-dark btn-block" %>
+            </div>
+          </div>
+        </div>
+      <%end%>
     </div>
-    <div class="border border-bottom-dark"></div>
+    <div class="border"></div>
     <div class="container">
       <%= yield %>
     </div>
+    <div class="border border border-dark mt-5"></div>
+    <div class="row mt-5 mb-5"></div>
   </body>
 </html>

@@ -17,6 +17,21 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
- bg-gray {
+ .bg-gray {
   background-color: gray;
  }
+ 
+ .plus-button {
+  font-size: 40px;
+ }
+ 
+ .flex {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.wrap {
+  display: flex;
+  flex-flow: row wrap;
+}
+ 

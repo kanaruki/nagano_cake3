@@ -1,0 +1,77 @@
+<div class="row mt-5">
+  <div class="col-auto offset-1">
+    <h4 class="mb-0 bg-gray">ショッピングカート</h4>
+  </div>
+  <div class="col-auto ml-auto">
+    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger btn-block" %>
+  </div>
+</div>
+
+<div class= "mt-5">
+  <table class="table table-bordered border-dark">
+    <thead>
+      <tr>
+        <th class="col-4">商品名</th>
+        <th class="col-2">単価(税込)</th>
+        <th class="col-2">数量</th>
+        <th class="col-2">小計</th>
+        <th class="col-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sum = 0 %>
+      <% @cart_item_all.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag cart_item.item, :image, size: "30x20", format: 'jpeg' %>  <%= cart_item.item.name %>
+          </td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :PATCH, local:true do |f| %>
+            <td>
+              <div class="row">
+                <div class="col-auto my-auto">
+                  <%= f.select :amount, *[1..10], autocomplete: "f.amount", class: "form-select" %>
+                </div>
+                <div class="col-auto">
+                  <%= f.submit "変更", class: "btn btn-success btn-block" %>
+                </div>
+              </div>
+            </td>
+          <%end%>
+          <td><%= cart_item.subtotal %></td>
+          <td>
+            <div class="row">
+              <div class="col-auto mx-auto">
+                <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: " btn btn-danger btn-block my-auto" %>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <% @sum += cart_item.subtotal %>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+<div class="row mt-4">
+  <div class="col-2 offset-1">
+    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary btn-block" %>
+  </div>
+  <div class="col-4 offset-5">
+    <table class="table table-bordered border-dark">
+      <tr>
+        <th class="col-6 bg-gray">合計金額</th>
+        <td class="col-6">
+          <%= @sum %>
+        </td>             
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-2 mx-auto">
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-block" %>
+  </div>
+</div>
+
+
+<%#= f.select :amount, *[1..10], include_blank: "個数選択", class: "form-select" %>

@@ -1,0 +1,35 @@
+<div class="row mt-5">
+  <div class="col-auto offset-1 bg-gray">
+    <h4 class="mb-0">配送先編集</h4>
+  </div>
+</div>
+
+<%= form_with model: @address, url: address_path(@address), method: :PATCH, local:true do |address| %>
+  <div class="row mt-5">
+    <div class="col-3">
+      郵便番号(ハイフンなし)
+    </div>
+    <div class="col-3">
+      <%= address.text_field :postal_code,class: 'form-control',autofocus: true, autocomplete: "postal_code" %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-3">
+      住所
+    </div>
+    <div class="col-6">
+      <%= address.text_field :address,class: 'form-control', autocomplete: "address"%>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-3">
+      宛名
+    </div>
+    <div class="col-3">
+      <%= address.text_field :name,class: 'form-control', autocomplete: "name" %>
+    </div>
+    <div class="col-2 offset-3">
+      <%= address.submit "変更内容を保存", class: "btn btn-success btn-block" %>
+    </div>
+  </div>
+<%end%>
