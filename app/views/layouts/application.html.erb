@@ -7,15 +7,25 @@
     <script src="https://kit.fontawesome.com/653e24c49b.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
   </head>
 
   <body>
     <div class="row mt-5 mb-5">
-      <div class="col-2 ml-5 border border-secondary mt-auto mb-auto">
-        <h1>LOgo</h1>
+      <div class="col-2 ml-5 border border-dark mt-auto mb-auto">
+        <%= link_to root_path do %>
+          <h1 class="text-dark text-center px-auto">LOGO</h1>
+        <%end%>
+      </div>
+      <div class= "col-auto my-auto offset-1">
+        <% if customer_signed_in? %>
+          <h6 class="text-center">ようこそ！<%= current_customer.last_name %>さん</h6>
+        <%else%>
+        <%end%>
       </div>
       <% if customer_signed_in? %>
-        <div class="col-8 mt-auto mb-auto ml-auto">
+        <div class="col-7 mt-auto mb-auto ml-auto">
           <div class="row">
             <div class="col-2 mt-auto mb-auto ml-auto">
               <%= link_to "マイページ", customers_mypage_path(current_customer), class: "btn btn-dark btn-block" %>
@@ -55,7 +65,7 @@
         <div class="col-8 mt-auto mb-auto ml-auto">
           <div class="row">
             <div class="col-2 mt-auto mb-auto ml-auto">
-              <%= link_to "About誰もいない", about_path, class: "btn btn-dark btn-block" %>
+              <%= link_to "About", about_path, class: "btn btn-dark btn-block" %>
             </div>
             <div class="col-2 mt-auto mb-auto">
               <%= link_to "商品一覧", items_path, class: "btn btn-dark btn-block" %>

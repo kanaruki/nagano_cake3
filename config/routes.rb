@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resources :items, only: [:index,:show]
     delete 'cart_items/destroy_all' =>'cart_items#destroy_all'
     resources :cart_items, only: [:index,:update,:destroy,:create]
-    resources :orders, only: [:new,:top,:create,:index,:show]
+    get 'orders/top' => 'orders#top'
+    post 'orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:new,:create,:index,:show]
+    # post 'orders/confirm' => 'orders#confirm'
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
     get 'about' => 'homes#about'
     root 'homes#top'
@@ -23,7 +26,6 @@ Rails.application.routes.draw do
     patch 'customers/customers/infomation' => 'customers#update'
     get 'customers/withdrawal' =>'customers#withdrawal'
     get 'customers/confirm' => 'customers#confirm'
-    post 'orders/confirm' => 'order#confirm'
   end
   
 
@@ -31,8 +33,8 @@ Rails.application.routes.draw do
    resources :items, only: [:index, :show, :new, :create, :edit, :update]
    resources :genres, only: [:index,:create,:edit,:update]
    resources :customers, only: [:index,:show,:edit,:update]
-   resources :order_details, only: [:show,:update]
-   resources :orders, only: [:update]
+   resources :order_details, only: [:update]
+   resources :orders, only: [:show,:update]
    get 'top' => 'homes#top'
   end
 

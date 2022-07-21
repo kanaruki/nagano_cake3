@@ -1,1 +1,44 @@
-注文履歴
+<div class="row mt-5">
+  <div class="col-auto offset-1 bg-gray">
+    <h4 class="mb-0">注文履歴一覧</h4>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col">
+    <table class="table table-bordered border-dark">
+      <thead>
+        <tr>
+          <th class="col-2">追加日</th>
+          <th class="col-3">配送先</th>
+          <th class="col-2">注文商品</th>
+          <th class="col-1">支払金額</th>
+          <th class="col-2">ステータス</th>
+          <th class="col-2">注文詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @current_customer_orders.each do |order| %>
+            <tr>
+              <td><%= l order.created_at, format: :short %></td>
+              <td>
+                <div><%= order.postal_code %></div>
+                <div><%= order.address %></div>
+                <div><%= order.name %></div>
+              </td>
+              <td>
+                <% order.order_details.each do |detail| %>
+                  <div><%= detail.item.name %></div>
+                <%end%>
+              </td>
+              <td>
+                <h6><%= order.total_payment %>円</h6>
+              </td>
+              <td><%= order.status_i18n %></td>
+              <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+            </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

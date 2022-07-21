@@ -66,7 +66,7 @@
       <%= f.submit "変更内容を保存", class: "btn btn-success btn-block" %>
     </div>
     <div class="col-auto offset-2">
-      <button type="button" class="btn btn-danger btn-block">退会する</button>
+      <%= link_to "退会する", customers_confirm_path, class: "btn btn-danger btn-block" %>
     </div>
   </div>
 <% end %>

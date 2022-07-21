@@ -1,2 +1,36 @@
-<h1>Admins::Homes#top</h1>
-<p>Find me in app/views/admins/homes/top.html.erb</p>
+<div class="row mt-5">
+  <div class="col-auto offset-1">
+    <h4 class="bg-gray">注文履歴一覧</h4>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-10 mx-auto">
+    <table class="table">
+      <thead>
+        <tr class="bg-gray"><th class="col-3">購入日時</th><th class="col-3">購入者</th><th class="col-3">注文個数</th><th class="col-3">注文ステータス</th></tr>
+      </thead>
+      <tbody>
+        <% @order_all.each do |order| %>
+          <% @sum = 0 %>
+          <tr>
+            <td>
+              <%= link_to admins_order_path(order) do %>
+                <h6 class="col-auto text-dark border-bottom border-dark">
+                  <%= l order.created_at %>
+                </h6>
+              <%end%>
+            </td>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <% order.order_details.each do |detail| %>
+              <%  @sum += detail.amount%>
+            <%end%>
+            <td><%= @sum %></td>
+             <%#= @order.payment_method_i18n %>
+            <td><%= order.status_i18n %></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

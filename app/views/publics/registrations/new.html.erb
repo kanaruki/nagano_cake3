@@ -1,6 +1,6 @@
 <div class="row mt-5">
   <div class="col-auto offset-1 bg-gray">
-    <h4>新規会員登録</h4>
+    <h4 class="mb-0">新規会員登録</h4>
   </div>
 </div>
 
@@ -11,10 +11,10 @@
       名前
     </div>
     <div class="col-3">
-      <%= f.text_field :last_name,class: 'form-control',autofocus: true, autocomplete: "last_name" %>
+      <%= f.text_field :last_name,class: 'form-control',autofocus: true %>
     </div>
     <div class="col-3">
-      <%= f.text_field :first_name,class: 'form-control', autofocus: true, autocomplete: "first_name" %>
+      <%= f.text_field :first_name,class: 'form-control' %>
     </div>
   </div>
   
@@ -23,10 +23,10 @@
       フリガナ
     </div>
     <div class="col-3">
-      <%= f.text_field :last_name_kana, class: 'form-control', autofocus: true, autocomplete: "last_name_kana" %>
+      <%= f.text_field :last_name_kana, class: 'form-control' %>
     </div>
     <div class="col-3 mr-1">
-      <%= f.text_field :first_name_kana,class: 'form-control', autofocus: true, autocomplete: "first_name_kana" %>
+      <%= f.text_field :first_name_kana,class: 'form-control' %>
     </div>
   </div>
   
@@ -35,7 +35,7 @@
       メールアドレス
     </div>
     <div class="col-3">
-      <%= f.text_field :email,class: 'form-control',autofocus: true, autocomplete: "last_name_kana" %>
+      <%= f.text_field :email,class: 'form-control' %>
     </div>
   </div>
   
@@ -44,7 +44,7 @@
       郵便番号(ハイフンなし)
     </div>
     <div class="col-3">
-      <%= f.text_field :postal_code,class: 'form-control',autofocus: true, autocomplete: "last_name_kana" %>
+      <%= f.text_field :postal_code,class: 'form-control' %>
     </div>
   </div>
   <div class="row mt-2">
@@ -52,7 +52,7 @@
       住所
     </div>
     <div class="col-8">
-      <%= f.text_field :address,class: 'form-control',autofocus: true, autocomplete: "last_name_kana" %>
+      <%= f.text_field :address,class: 'form-control' %>
     </div>
   </div>
   <div class="row mt-2">
@@ -60,7 +60,7 @@
       電話番号(ハイフンなし)
     </div>
     <div class="col-3">
-      <%= f.text_field :telephone_number,class: 'form-control',autofocus: true, autocomplete: "telephone_number" %>
+      <%= f.text_field :telephone_number,class: 'form-control' %>
     </div>
   </div>
   <div class="row mt-2">
@@ -68,7 +68,7 @@
       パスワード(６文字以上)
     </div>
     <div class="col-3">
-      <%= f.password_field :password,class: 'form-control',autofocus: true, autocomplete: "encrypted_password" %>
+      <%= f.password_field :password,class: 'form-control' %>
     </div>
   </div>
   <div class="row mt-2">
@@ -76,7 +76,7 @@
       パスワード(確認用)
     </div>
     <div class="col-3">
-      <%= f.password_field :password_confirmation,class: 'form-control',autofocus: true, autocomplete: "encrypted_password" %>
+      <%= f.password_field :password_confirmation,class: 'form-control' %>
     </div>
   </div>
   
@@ -90,7 +90,7 @@
 
 <div class="row mt-5">
   <div class="col-auto offset-1 bg-gray">
-    <h4>既に登録済みの方</h4>
+    <h4 class="mb-0">既に登録済みの方</h4>
   </div>
 </div>
 <div class="row mt-3">

@@ -26,7 +26,7 @@
           (税抜価格)
         </div>
       </div>
-      <div class="col-8 my-auto"><h5><%= @item.price*1.1 %>(<%= @item.price %>)円</h5></div>
+      <div class="col-8 my-auto"><h5><%= @item.with_tax_price %>(<%= @item.price %>)円</h5></div>
     </div>
     <div class="row mt-4">
       <div class="col-3">販売ステータス</div>

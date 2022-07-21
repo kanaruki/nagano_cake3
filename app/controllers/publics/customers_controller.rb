@@ -17,6 +17,10 @@ class Publics::CustomersController < ApplicationController
   end
 
   def withdrawal
+    @customer_id = Customer.find(current_customer.id)
+    @customer_id.is_active = false
+    @customer_id.update
+    redirect_to customers_confirm_path
   end
 
   def customer_params

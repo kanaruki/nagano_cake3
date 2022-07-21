@@ -4,4 +4,6 @@ class CartItem < ApplicationRecord
   def subtotal
     item.with_tax_price * amount
   end
+  validates :amount, presence: true,
+                     length: { minimum: 1, maximum: 10 }
 end

@@ -1,2 +1,81 @@
-<h1>Admins::OrderDetails#show</h1>
-<p>Find me in app/views/admins/order_details/show.html.erb</p>
+<!--<div class="row mt-5">-->
+<!--  <div class="col-auto offset-1">-->
+<!--    <h4 class="bg-gray">注文履歴詳細</h4>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row mt-4">-->
+<!--  <div class="col-2">-->
+<!--    <h5>購入者</h5>-->
+<!--  </div>-->
+<!--  <div class="col-auto ">-->
+<!--    <h5><%#= @order.name %></h5>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="row  mt-2">-->
+<!--  <div class="col-2">-->
+<!--    <h5>注文日</h5>-->
+<!--  </div>-->
+<!--  <div class="col-auto">-->
+<!--    <h5>-->
+<!--      <#%= l @order.created_at, format: :short%>-->
+<!--    </h5>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row mt-2">-->
+<!--  <div class="col-2">-->
+<!--    <h5>配送先</h5>-->
+<!--  </div>-->
+<!--  <div class="col-auto">-->
+<!--    <h5>〒<%= @order.postal_code %><%= @order.address %></h5>-->
+<!--    <h5><%= @order.name %></h5>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row mt-2">-->
+<!--  <div class="col-2">-->
+<!--    <h5>支払方法</h5>-->
+<!--  </div>-->
+<!--  <div class="col-auto">-->
+<!--    <h5>-->
+<!--      <%= @order.payment_method_i18n %>-->
+<!--    </h5>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row mt-2">-->
+<!--  <div class="col-2 my-auto">-->
+<!--    <h5>注文ステータス</h5>-->
+<!--  </div>-->
+<!--  <div class="col-auto my-auto">-->
+<!--    <%= form_with model: @order, url: admins_order_path(@order), method: :PATCH, local:true do |f| %>-->
+    <%#= f.select :order_status, options_from_collection_for_select(current_customer.addresses.all, :id, :full_address) %>
+    <!--= options_for_select([['London', 1], ['Tokyo', 2], ['Beijing', 3]])-->
+<!--      <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>-->
+<!--  </div>-->
+<!--  <div class="col-auto">-->
+<!--    <%= f.submit "更新", class: "btn btn-success btn-block" %>-->
+<!--  </div>-->
+<!--  <%end%>-->
+    <!--<%#= f.select :status, [], autocomplete: "f.amount", class: "form-select" %>-->
+<!--</div>-->
+<!--<div class="row mt-5">-->
+<!--  <div class="col">-->
+<!--    <table class="table">-->
+<!--      <thead>-->
+<!--        <tr><th class="col-4">商品名</th><th class="col-2">単価(税込)</th><th class="col-1">数量</th><th class="col-2">小計</th><th class="col-4">製造ステータス</th><th class="col-1"></th></tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--        <% @details.each do |detail| %>-->
+<!--        <tr>-->
+<!--          <td><%= detail.item.name %></td><td><%= detail.price %></td><td><%= detail.amount %></td><td><%= detail.price * detail.amount %></td>-->
+          
+<!--          <%= form_with model: detail, url: admins_order_detail_path(detail), method: :patch, local:true do |f| %>-->
+<!--            <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>-->
+<!--            <%= f.hidden_field :order_detail_id, value: detail.id %>-->
+<!--            <%= f.submit "更新", class: "btn btn-success" %></td>-->
+<!--          <%end%>-->
+<!--        </tr>-->
+<!--        <%end%>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->

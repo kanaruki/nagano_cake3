@@ -1,3 +1,9 @@
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <% @item.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <div class="row mt-5">
   <div class="col-auto offset-1">
     <h4 class="mb-0 bg-gray">商品編集</h4>
